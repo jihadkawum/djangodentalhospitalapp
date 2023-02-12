@@ -1,0 +1,192 @@
+{% extends 'base/base.html' %}
+{% block content %}
+  <div class="col-lg-9 offset-lg-2 col-sm-12">
+    <div class="card">
+      <div class="header">
+        <h1>Patient Details</h1>
+      </div>
+      <div class="body">
+        <div class="col-lg-12">
+          <div class="header">
+            <h4>Patient information</h4>
+          </div>
+          <div class="row">
+            <div class="col-lg-12 mt-2">
+              <div class="row">
+                <div class="col-lg-6">
+                  <label>Register no</label>: {{ detailsinformation.registration_no }}
+                </div>
+                <div class="col-lg-6">
+                  <label>Date</label>: {{ detailsinformation.recorddate }}
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <label>Name: </label> {{ detailsinformation.patient_name }}
+            </div>
+            <div class="col-lg-12">
+              <label>Occupation: </label> {{ detailsinformation.occupation }}
+            </div>
+            <div class="col-lg-12">
+              <label>Age: </label> {{ detailsinformation.age }}
+            </div>
+            <div class="col-lg-12">
+              <label>Gender: </label> {{ detailsinformation.gender }}
+            </div>
+            <div class="col-lg-12">
+              <label>Address: </label> {{ detailsinformation.address }}
+            </div>
+            <div class="col-lg-12">
+              <label>Phone: </label> {{ detailsinformation.phone }}
+            </div>
+            <div class="col-lg-12">
+              <label>Email: </label> {{ detailsinformation.email }}
+            </div>
+            <div class="col-lg-12">
+              <label>Parents/Guardian's Name (If child): </label> {{ detailsinformation.guardian_name }}
+            </div>
+            <div class="col-lg-12">
+              <label>Refference: </label> {{ detailsinformation.refferance }}
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-12 mt-5">
+          <div class="header">
+            <h4>Medical History</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 mt-2">
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Drug Allergy</label></div>
+              <div class="col-lg-7">{{ detailsinformation.drug_allergy }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label><small>(If any Name)</small></label></div>
+              <div class="col-lg-7">{{ detailsinformation.name_drug_allergy }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Rheumatic Fever</label></div>
+              <div class="col-lg-7">{{ detailsinformation.rheumatic_fever }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Valvular diseases</label></div>
+              <div class="col-lg-7">{{ detailsinformation.valvular_diseases }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Asthma/TB</label></div>
+              <div class="col-lg-7">{{ detailsinformation.asthma_tb }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Hypertension</label></div>
+              <div class="col-lg-7">{{ detailsinformation.hypertension }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Heart Disease</label></div>
+              <div class="col-lg-7">{{ detailsinformation.heart_desease }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Heart Valve/Pace Maker</label></div>
+              <div class="col-lg-7">{{ detailsinformation.heart_valve_pace_maker }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Peptic Ulcer</label></div>
+              <div class="col-lg-7">{{ detailsinformation.peptic_ulcer }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Jaundice/Liver Disease</label></div>
+              <div class="col-lg-7">{{ detailsinformation.jaundice_liver_disease }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Diabetes</label></div>
+              <div class="col-lg-7">{{ detailsinformation.diabetes }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Kidney disease</label></div>
+              <div class="col-lg-7">{{ detailsinformation.kidney_disease }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Epilepsy (মৃগী রোগ)</label></div>
+              <div class="col-lg-7">{{ detailsinformation.epilepsy }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Bleeding Disorder</label></div>
+              <div class="col-lg-7">{{ detailsinformation.bleeding_disorder }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Viral Infection (Hepa. B/C/HIV)</label></div>
+              <div class="col-lg-7">{{ detailsinformation.hepa_b_c_hiv }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Take any vaccine for viral infection?</label></div>
+              <div class="col-lg-7">{{ detailsinformation.take_any_vaccine }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>What kinds of vaccine?</label></div>
+              <div class="col-lg-7">{{ detailsinformation.vaccine_type }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Drug History (If any name)</label></div>
+              <div class="col-lg-7">{{ detailsinformation.drug_history_name_if_any }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Last dental check-up date</label></div>
+              <div class="col-lg-7">{{ detailsinformation.last_dental_check_up_date }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>What kinds of treatment do you have last for teeth?</label></div>
+              <div class="col-lg-7">{{ detailsinformation.last_treatment_type }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Habits & Addiction</label></div>
+              <div class="col-lg-7">{{ detailsinformation.habits_addiction_name }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Experience to tooth Extraction & Anaesthesia</label></div>
+              <div class="col-lg-7">{{ detailsinformation.experience_tooth_extraction_anaesthesia }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Pregnancy</label></div>
+              <div class="col-lg-7">{{ detailsinformation.pregnancy }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Month Please (If pregnant)</label></div>
+              <div class="col-lg-7">{{ detailsinformation.month_pregnant }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Last Period date</label></div>
+              <div class="col-lg-7">{{ detailsinformation.lmp_date }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Any other information</label></div>
+              <div class="col-lg-7">{{ detailsinformation.other_information }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 mt-5">
+          <div class="header">
+            <h4>Treatment plan</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Date</label></div>
+              <div class="col-lg-7">{{ detailsinformation.treatment_date }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Procedure</label></div>
+              <div class="col-lg-7">{{ detailsinformation.procedure }}</div>
+            </div>
+            <div class="row">
+              <div class="col-lg-5 col-sm-12"><label>Next Work/Next Date</label></div>
+              <div class="col-lg-7">{{ detailsinformation.next_date }}</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

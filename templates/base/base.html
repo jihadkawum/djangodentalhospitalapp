@@ -1,0 +1,56 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>:: Lucid Hospital :: Home</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <meta name="description" content="Lucid Bootstrap 4.1.1 Admin Template">
+  <meta name="author" content="WrapTheme, design by: ThemeMakker.com">
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- VENDOR CSS -->
+  <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.css"
+        integrity="sha512-FA9cIbtlP61W0PRtX36P6CGRy0vZs0C2Uw26Q1cMmj3xwhftftymr0sj8/YeezDnRwL9wtWw8ZwtCiTDXlXGjQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
+  <link rel="stylesheet" href="{% static 'assets/vendor/chartist/css/chartist.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/vendor/toastr/toastr.min.css' %}">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/color_skins.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+</head>
+<body class="theme-cyan">
+
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+  <div class="loader">
+    <div class="m-t-30"><img src="{% static 'assets/images/dental-logo.png' %}"
+                             width="48" height="48" alt="Lucid"></div>
+    <p>Please wait...</p>
+  </div>
+</div>
+
+
+<div id="wrapper">
+  {% include 'base/topnav.html' %}
+  {% include 'base/sidebar.html' %}
+
+  <div id="main-content">
+    <div class="container-fluid">
+      {% block content %}
+
+
+      {% endblock %}
+    </div>
+  </div>
+
+</div>
+{% include 'base/footer.html' %}

@@ -1,0 +1,368 @@
+{% extends 'base/base.html' %}
+{% block content %}
+  <div class="col-lg-7 offset-lg-2 col-sm-12">
+    <div class="card">
+      <div class="header">
+        <h1>Add Patient Information</h1>
+      </div>
+      <div class="body">
+        <form action="{% url 'dentalrecord:patientinfoadd' %}" enctype='multipart/form-data' method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Register no</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.registration_no }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Date</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.recorddate }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Name</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.patient_name }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Occupation</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.occupation }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Age</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.age }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Gender:</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.gender %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Address</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.address }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Phone</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.phone }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Email</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.email }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Parents/Guardian's Name (If child)</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.guardian_name }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Refference</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.refferance }}
+            </div>
+          </div>
+          <hr>
+          <div class="header">
+            <h1>Medical History</h1>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Drug Allergy</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.drug_allergy %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12"><small>(If any Name)</small></label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.name_drug_allergy }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Rheumatic Fever</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.rheumatic_fever %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Valvular diseases</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.valvular_diseases %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Asthma/TB</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.asthma_tb %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Hypertension</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.hypertension %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Heart Disease</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.heart_desease %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Heart Valve/Pace Maker</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.heart_valve_pace_maker %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Peptic Ulcer</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.peptic_ulcer %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Jaundice/Liver Disease</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.jaundice_liver_disease %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Diabetes</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.diabetes %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Kidney disease</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.kidney_disease %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Epilepsy (মৃগী রোগ)</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.epilepsy %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Bleeding Disorder</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.bleeding_disorder %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Viral Infection (Hepa. B/C/HIV)</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.hepa_b_c_hiv %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Take any vaccine for viral infection?</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.take_any_vaccine %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">What kinds of vaccine?</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.vaccine_type }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Drug History (If any name)</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.drug_history_name_if_any }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Last dental check-up date</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.last_dental_check_up_date }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">What kinds of treatment do you have last for teeth?</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.last_treatment_type }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Habits & Addiction</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.habits_addiction_name }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Experience to tooth Extraction & Anaesthesia</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.experience_tooth_extraction_anaesthesia %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Pregnancy</label>
+            <div class="col-xl-9 col-sm-12">
+              {% for choice in infoform.pregnancy %}
+                <label for="{{ choice.id_for_label }}" class="fancy-radio">
+                  {{ choice.tag }}
+                  <span><i></i>{{ choice.choice_label }}</span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Month Please (If pregnant)</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.month_pregnant }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Last Period date</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.lmp_date }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Any other information</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.other_information }}
+            </div>
+          </div>
+
+          <hr>
+          <div class="header">
+            <h1>Treatment plan</h1>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Date</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.treatment_date }}
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Procedure</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.procedure }}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-xl-3 col-sm-12">Next Work/Next Date</label>
+            <div class="col-xl-9 col-sm-12">
+              {{ infoform.next_date }}
+            </div>
+          </div>
+
+
+          <button type="submit" class="btn btn-theme-colored1">Submit your information</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base/base.html' %}
+{% block content %}
+  <div class="col-lg-9 offset-lg-2 col-sm-12">
+    <div class="card">
+      <div class="header">
+        <h1>Patient Information</h1>
+      </div>
+      <div class="body">
+        <table class="table table-bordered table-hover table-striped" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Register no</th>
+            <th>Patient's Name</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+            <th>Register no</th>
+            <th>Patient's Name</th>
+            <th>Actions</th>
+          </tr>
+          </tfoot>
+          <tbody>
+          {% for patientlist in patientlist %}
+            <tr class="gradeA">
+              <td><a href="{% url 'dentalrecord:details' patientlist.pk %}">{{ patientlist.registration_no }}</a></td>
+              <td>{{ patientlist.patient_name }}</td>
+              <td class="actions">
+                <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing m-r-5 button-save"
+                   data-toggle="tooltip" data-original-title="View"><i class="icon-eye" aria-hidden="true"></i></a>
+                <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-editing button-discard"
+                   data-toggle="tooltip" data-original-title="Discard" hidden><i class="icon-close"
+                                                                                 aria-hidden="true"></i></a>
+                <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
+                   data-toggle="tooltip" data-original-title="Edit"><i class="icon-pencil" aria-hidden="true"></i></a>
+                <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
+                   data-toggle="tooltip" data-original-title="Remove"><i class="icon-trash" aria-hidden="true"></i></a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
