@@ -10,11 +10,11 @@ YES_NO_CHOICES = [
 ]
 MALE = 'Male'
 FEMALE = 'Female'
-TRANSGENDER = 'Transgender'
+RATHERNOTTOSAY = 'Rather not to say'
 GENDER_CHOICES = [
     (MALE, 'Male'),
     (FEMALE, 'Female'),
-    (TRANSGENDER, 'Transgender')
+    (RATHERNOTTOSAY, 'Rather not to say')
 ]
 
 
@@ -38,13 +38,13 @@ class PatientRecord(forms.ModelForm):
 
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
 
-    guardian_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    guardian_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    refferance = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    refferance = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     drug_allergy = forms.CharField(widget=forms.RadioSelect(choices=YES_NO_CHOICES))
 
-    name_drug_allergy = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    name_drug_allergy = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     rheumatic_fever = forms.CharField(widget=forms.RadioSelect(choices=YES_NO_CHOICES))
 
@@ -78,30 +78,30 @@ class PatientRecord(forms.ModelForm):
 
     drug_history_name_if_any = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    last_dental_check_up_date = forms.DateField(widget=forms.TextInput(
+    last_dental_check_up_date = forms.DateField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'data-provide': 'datepicker', 'data-date-autoclose': 'true'}))
 
-    last_treatment_type = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    last_treatment_type = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    habits_addiction_name = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    habits_addiction_name = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
     experience_tooth_extraction_anaesthesia = forms.CharField(widget=forms.RadioSelect(choices=YES_NO_CHOICES))
 
-    pregnancy = forms.CharField(widget=forms.RadioSelect(choices=YES_NO_CHOICES))
+    pregnancy = forms.CharField(required=False, widget=forms.RadioSelect(choices=YES_NO_CHOICES))
 
-    month_pregnant = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    month_pregnant = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    lmp_date = forms.DateField(widget=forms.TextInput(
+    lmp_date = forms.DateField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'data-provide': 'datepicker', 'data-date-autoclose': 'true'}))
 
-    other_information = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
+    other_information = forms.CharField(required=False, widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3}))
 
-    treatment_date = forms.DateField(widget=forms.TextInput(
+    treatment_date = forms.DateField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'data-provide': 'datepicker', 'data-date-autoclose': 'true'}))
 
-    procedure = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    procedure = forms.CharField(required=False, widget=forms.TextInput(attrs={'class': 'form-control'}))
 
-    next_date = forms.DateField(widget=forms.TextInput(
+    next_date = forms.DateField(required=False, widget=forms.TextInput(
         attrs={'class': 'form-control', 'data-provide': 'datepicker', 'data-date-autoclose': 'true'}))
 
     class Meta:
@@ -110,3 +110,5 @@ class PatientRecord(forms.ModelForm):
 
     def refresh_from_db(self):
         pass
+
+

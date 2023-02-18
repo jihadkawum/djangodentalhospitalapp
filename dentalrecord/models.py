@@ -23,11 +23,11 @@ class PatientInformation(models.Model):
     age = models.CharField(max_length=200, null=True, blank=True, default='')
     MALE = 'Male'
     FEMALE = 'Female'
-    TRANSGENDER = 'Transgender'
+    RATHERNOTTOSAY = 'Rather not to say'
     GENDER_CHOICES = [
         (MALE, 'Male'),
         (FEMALE, 'Female'),
-        (TRANSGENDER, 'Transgender')
+        (RATHERNOTTOSAY, 'Rather not to say')
     ]
     gender = models.CharField(max_length=100, null=True, blank=True, choices=GENDER_CHOICES, default='')
     address = models.TextField(default='', null=True, blank=True)

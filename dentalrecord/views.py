@@ -78,3 +78,24 @@ def infodetails(request, pk):
         'detailsinformation': patientdetails,
     }
     return render(request, 'pages/infodetails.html', context)
+
+
+def infoedit(request, pk):
+    detailsedit = PatientInformation.objects.get(pk=pk)
+    context = {
+        'detailsedit': detailsedit
+    }
+    return render(request, 'pages/infoedit.html', context)
+
+
+def infoupdate(request, pk):
+    detailsedit = PatientInformation.objects.get(pk=pk)
+    updateform = PatientRecord(request.POST, instance=detailsedit)
+
+    if updateform.is_valid():
+        updateform.save()
+        return redirect('dentalrecord:details, pk=pk')
+    context = {
+        'updateform': updateform
+    }
+    return render(request, 'pages/infoedit.html', context)
