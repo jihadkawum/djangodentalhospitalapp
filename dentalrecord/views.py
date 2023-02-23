@@ -8,7 +8,13 @@ from django.db.models import Q
 # Create your views here.
 
 def index(request):
-    return render(request, 'pages/index.html')
+    list_of_patient = PatientInformation.objects.values('patient_name')
+    total_patient = PatientInformation.objects.count()
+    context = {
+        'list_of_patient': list_of_patient,
+        'total_patient': total_patient
+    }
+    return render(request, 'pages/index.html', context)
 
 
 def patientinfoadd(request):

@@ -2,3 +2,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+.navbar-fixed-top .navbar-right #navbar-search {
+    float: right;
+}
+.search-form .btn {
+    right:25px !important;
+}
