@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="col-lg-9 offset-lg-2 col-sm-12">
+    <div class="card">
+      <div class="header">
+        <h1>Search Result....</h1>
+      </div>
+      <div class="body">
+      {% if no_result %}
+        <p>Sorry no result found</p>
+      {% else %}
+
+        <table class="table table-bordered table-hover table-striped" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Register no</th>
+            <th>Patient's Name</th>
+          </tr>
+          </thead>
+          <tfoot>
+          <tr>
+            <th>Register no</th>
+            <th>Patient's Name</th>
+          </tr>
+          </tfoot>
+          <tbody>
+          {% for searchresult in object_list %}
+            <tr class="gradeA">
+              <td><a href="{% url 'dentalrecord:details' searchresult.pk %}">{{ searchresult.registration_no }}</a></td>
+              <td><a href="{% url 'dentalrecord:details' searchresult.pk %}">{{ searchresult.patient_name }}</a></td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+
+      {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

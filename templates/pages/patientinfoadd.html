@@ -9,6 +9,7 @@
       <div class="body">
         <form action="{% url 'dentalrecord:patientinfoadd' %}" enctype='multipart/form-data' method="POST">
           {% csrf_token %}
+
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Register no</label>
             <div class="col-xl-9 col-sm-12">

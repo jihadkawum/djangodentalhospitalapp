@@ -7,6 +7,7 @@
         <h1>Patient Information</h1>
       </div>
       <div class="body">
+        <div class="col-lg-12 mt-4 mb-5"><a href="{% url 'dentalrecord:patientinfoadd' %}" class="btn btn-primary"><span class="icon icon-plus"></span>&nbsp;Add New Patient Information</a></div>
         <table class="table table-bordered table-hover table-striped" cellspacing="0">
           <thead>
           <tr>
@@ -28,12 +29,14 @@
               <td><a href="{% url 'dentalrecord:details' patientlist.pk %}">{{ patientlist.registration_no }}</a></td>
               <td><a href="{% url 'dentalrecord:details' patientlist.pk %}">{{ patientlist.patient_name }}</a></td>
               <td class="actions">
-                <a href="{% url 'dentalrecord:details' patientlist.pk %}" class="btn btn-sm btn-icon btn-pure btn-default on-editing m-r-5 button-save"
+                <a href="{% url 'dentalrecord:details' patientlist.pk %}"
+                   class="btn btn-sm btn-icon btn-pure btn-default on-editing m-r-5 button-save"
                    data-toggle="tooltip" data-original-title="View"><i class="icon-eye" aria-hidden="true"></i></a>
 
-                <a href="{% url 'dentalrecord:edit' patientlist.pk %}" class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
+                <a href="{% url 'dentalrecord:edit' patientlist.pk %}"
+                   class="btn btn-sm btn-icon btn-pure btn-default on-default m-r-5 button-edit"
                    data-toggle="tooltip" data-original-title="Edit"><i class="icon-pencil" aria-hidden="true"></i></a>
-                <a href="#" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
+                <a href="../delete/{{ patientlist.pk }}" class="btn btn-sm btn-icon btn-pure btn-default on-default button-remove"
                    data-toggle="tooltip" data-original-title="Remove"><i class="icon-trash" aria-hidden="true"></i></a>
               </td>
             </tr>

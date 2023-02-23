@@ -7,42 +7,40 @@
         <h1>Edit Patient Information</h1>
       </div>
       <div class="body">
-        <form method="POST" action="/update/{{ detailsedit.pk }}">
+        <form method="POST" action="/update/{{ patientlist.pk }}" enctype='multipart/form-data'>
           {% csrf_token %}
-
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Register no</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="registration_no" class="form-control" required="" id="id_registration_no"
-                     value="{{ detailsedit.registration_no }}">
+              <input type="text" name="registration_no" maxlength=200 class="form-control" id="id_registration_no"
+                     value="{{ patientlist.registration_no }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Date</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="recorddate" class="form-control" data-provide="datepicker"
-                     data-date-autoclose="true" required="" id="id_recorddate" value="{{ detailsedit.recorddate }}">
+              <input type="date" name="recorddate" class="form-control"  id="id_recorddate" value="{{ patientlist.recorddate|date:'Y-m-d' }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Name</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="patient_name" class="form-control" required="" id="id_patient_name"
-                     value="{{ detailsedit.patient_name }}">
+              <input type="text" name="patient_name" maxlength=200 class="form-control" id="id_patient_name"
+                     value="{{ patientlist.patient_name }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Occupation</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="occupation" class="form-control" required="" id="id_occupation"
-                     value="{{ detailsedit.occupation }}">
+              <input type="text" name="occupation" maxlength=200 class="form-control" id="id_occupation"
+                     value="{{ patientlist.occupation }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Age</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="number" name="age" class="form-control" required="" id="id_age"
-                     value="{{ detailsedit.age }}">
+              <input type="number" name="age" maxlength="200" class="form-control" id="id_age"
+                     value="{{ patientlist.age }}">
             </div>
           </div>
           <div class="form-group">
@@ -50,20 +48,20 @@
             <div class="col-xl-9 col-sm-12">
 
               <label for="id_gender_0" class="fancy-radio">
-                <input type="radio" name="gender" value="Male" {% if detailsedit.gender == 'Male' %}
-                       checked {% endif %} id="id_gender_0" required="">
+                <input type="radio" name="gender" value="Male" {% if patientlist.gender == 'Male' %}
+                       checked {% endif %} id="id_gender_0">
                 <span><i></i>Male</span>
               </label>
 
               <label for="id_gender_1" class="fancy-radio">
-                <input type="radio" name="gender" value="Female" {% if detailsedit.gender == 'Female' %}
-                       checked {% endif %} id="id_gender_1" required="">
+                <input type="radio" name="gender" value="Female" {% if patientlist.gender == 'Female' %}
+                       checked {% endif %} id="id_gender_1">
                 <span><i></i>Female</span>
               </label>
 
               <label for="id_gender_2" class="fancy-radio">
-                <input type="radio" name="gender" value="Transgender" {% if detailsedit.gender == 'Transgender' %}
-                       checked {% endif %} id="id_gender_2" required="">
+                <input type="radio" name="gender" value="Rather not to say" {% if patientlist.gender == 'Rather not to say' %}
+                       checked {% endif %} id="id_gender_2">
                 <span><i></i>Rather not to say</span>
               </label>
 
@@ -73,36 +71,35 @@
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Address</label>
             <div class="col-xl-9 col-sm-12">
-              <textarea name="address" cols="30" rows="5" class="form-control" required=""
-                        id="id_address">{{ detailsedit.address }}</textarea>
+              <textarea name="address" cols="30" rows="5" class="form-control" id="id_address">{{ patientlist.address }}</textarea>
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Phone</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="tel" name="phone" class="form-control" required="" id="id_phone"
-                     value="{{ detailsedit.phone }}">
+              <input type="tel" name="phone" maxlength=200 class="form-control" id="id_phone"
+                     value="{{ patientlist.phone }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Email</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="email" name="email" class="form-control" required="" id="id_email"
-                     value="{{ detailsedit.email }}">
+              <input type="email" name="email" maxlength=1000 class="form-control" id="id_email"
+                     value="{{ patientlist.email }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Parents/Guardian's Name (If child)</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="guardian_name" class="form-control" required="" id="id_guardian_name"
-                     value="{{ detailsedit.guardian_name }}">
+              <input type="text" name="guardian_name" maxlength=200 class="form-control" id="id_guardian_name"
+                     value="{{ patientlist.guardian_name }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Refference</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="refferance" class="form-control" required="" id="id_refferance"
-                     value="{{ detailsedit.refferance }}">
+              <input type="text" name="refferance" maxlength=200 class="form-control" id="id_refferance"
+                     value="{{ patientlist.refferance }}">
             </div>
           </div>
           <hr>
@@ -114,13 +111,13 @@
             <div class="col-xl-9 col-sm-12">
               <label for="id_drug_allergy_0" class="fancy-radio">
                 <input type="radio" name="drug_allergy" value="Yes" id="id_drug_allergy_0"
-                  {% if detailsedit.drug_allergy == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.drug_allergy == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_drug_allergy_1" class="fancy-radio">
                 <input type="radio" name="drug_allergy" value="No" id="id_drug_allergy_1"
-                  {% if detailsedit.drug_allergy == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.drug_allergy == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
             </div>
@@ -128,8 +125,8 @@
           <div class="form-group">
             <label class="col-xl-3 col-sm-12"><small>(If any Name)</small></label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="name_drug_allergy" class="form-control" required="" id="id_name_drug_allergy"
-                     value="{{ detailsedit.name_drug_allergy }}">
+              <input type="text" name="name_drug_allergy" maxlength=2000 class="form-control" id="id_name_drug_allergy"
+                     value="{{ patientlist.name_drug_allergy }}">
             </div>
           </div>
 
@@ -139,13 +136,13 @@
 
               <label for="id_rheumatic_fever_0" class="fancy-radio">
                 <input type="radio" name="rheumatic_fever" value="Yes" id="id_rheumatic_fever_0"
-                  {% if detailsedit.rheumatic_fever == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.rheumatic_fever == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_rheumatic_fever_1" class="fancy-radio">
                 <input type="radio" name="rheumatic_fever" value="No" id="id_rheumatic_fever_1"
-                  {% if detailsedit.rheumatic_fever == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.rheumatic_fever == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -158,13 +155,13 @@
 
               <label for="id_valvular_diseases_0" class="fancy-radio">
                 <input type="radio" name="valvular_diseases" value="Yes" id="id_valvular_diseases_0"
-                  {% if detailsedit.valvular_diseases == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.valvular_diseases == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_valvular_diseases_1" class="fancy-radio">
                 <input type="radio" name="valvular_diseases" value="No" id="id_valvular_diseases_1"
-                  {% if detailsedit.valvular_diseases == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.valvular_diseases == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -176,13 +173,13 @@
 
               <label for="id_asthma_tb_0" class="fancy-radio">
                 <input type="radio" name="asthma_tb" value="Yes" id="id_asthma_tb_0"
-                  {% if detailsedit.asthma_tb == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.asthma_tb == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_asthma_tb_1" class="fancy-radio">
                 <input type="radio" name="asthma_tb" value="No" id="id_asthma_tb_1"
-                  {% if detailsedit.asthma_tb == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.asthma_tb == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -194,13 +191,13 @@
 
               <label for="id_hypertension_0" class="fancy-radio">
                 <input type="radio" name="hypertension" value="Yes" id="id_hypertension_0"
-                  {% if detailsedit.hypertension == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.hypertension == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_hypertension_1" class="fancy-radio">
                 <input type="radio" name="hypertension" value="No" id="id_hypertension_1"
-                  {% if detailsedit.hypertension == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.hypertension == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -212,13 +209,13 @@
 
               <label for="id_heart_desease_0" class="fancy-radio">
                 <input type="radio" name="heart_desease" value="Yes" id="id_heart_desease_0"
-                  {% if detailsedit.heart_desease == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.heart_desease == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_heart_desease_1" class="fancy-radio">
                 <input type="radio" name="heart_desease" value="No" id="id_heart_desease_1"
-                  {% if detailsedit.heart_desease == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.heart_desease == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -230,13 +227,13 @@
 
               <label for="id_heart_valve_pace_maker_0" class="fancy-radio">
                 <input type="radio" name="heart_valve_pace_maker" value="Yes" id="id_heart_valve_pace_maker_0"
-                  {% if detailsedit.heart_valve_pace_maker == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.heart_valve_pace_maker == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_heart_valve_pace_maker_1" class="fancy-radio">
                 <input type="radio" name="heart_valve_pace_maker" value="No" id="id_heart_valve_pace_maker_1"
-                  {% if detailsedit.heart_valve_pace_maker == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.heart_valve_pace_maker == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -248,13 +245,13 @@
 
               <label for="id_peptic_ulcer_0" class="fancy-radio">
                 <input type="radio" name="peptic_ulcer" value="Yes" id="id_peptic_ulcer_0"
-                  {% if detailsedit.peptic_ulcer == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.peptic_ulcer == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_peptic_ulcer_1" class="fancy-radio">
                 <input type="radio" name="peptic_ulcer" value="No" id="id_peptic_ulcer_1"
-                  {% if detailsedit.peptic_ulcer == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.peptic_ulcer == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -265,13 +262,13 @@
             <div class="col-xl-9 col-sm-12">
               <label for="id_jaundice_liver_disease_0" class="fancy-radio">
                 <input type="radio" name="jaundice_liver_disease" value="Yes" id="id_jaundice_liver_disease_0"
-                  {% if detailsedit.jaundice_liver_disease == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.jaundice_liver_disease == 'Yes' %} checked {% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_jaundice_liver_disease_1" class="fancy-radio">
                 <input type="radio" name="jaundice_liver_disease" value="No" id="id_jaundice_liver_disease_1"
-                  {% if detailsedit.jaundice_liver_disease == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.jaundice_liver_disease == 'No' %} checked {% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -284,13 +281,13 @@
 
               <label for="id_diabetes_0" class="fancy-radio">
                 <input type="radio" name="diabetes" value="Yes" id="id_diabetes_0"
-                       {% if detailsedit.diabetes == 'Yes' %}checked{% endif %} required="">
+                       {% if patientlist.diabetes == 'Yes' %}checked{% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_diabetes_1" class="fancy-radio">
                 <input type="radio" name="diabetes" value="No" id="id_diabetes_1"
-                       {% if detailsedit.diabetes == 'No' %}checked{% endif %} required="">
+                       {% if patientlist.diabetes == 'No' %}checked{% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -303,13 +300,13 @@
 
               <label for="id_kidney_disease_0" class="fancy-radio">
                 <input type="radio" name="kidney_disease" value="Yes" id="id_kidney_disease_0"
-                  {% if detailsedit.kidney_disease == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.kidney_disease == 'Yes' %} checked {% endif %} >
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_kidney_disease_1" class="fancy-radio">
                 <input type="radio" name="kidney_disease" value="No" id="id_kidney_disease_1"
-                       {% if detailsedit.kidney_disease == 'No' %}checked{% endif %} required="">
+                       {% if patientlist.kidney_disease == 'No' %}checked{% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -322,13 +319,13 @@
 
               <label for="id_epilepsy_0" class="fancy-radio">
                 <input type="radio" name="epilepsy" value="Yes" id="id_epilepsy_0"
-                  {% if detailsedit.epilepsy == 'Yes' %} checked {% endif %} required="">
+                  {% if patientlist.epilepsy == 'Yes' %} checked {% endif %} >
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_epilepsy_1" class="fancy-radio">
                 <input type="radio" name="epilepsy" value="No" id="id_epilepsy_1"
-                  {% if detailsedit.epilepsy == 'No' %} checked {% endif %} required="">
+                  {% if patientlist.epilepsy == 'No' %} checked {% endif %} >
                 <span><i></i>No</span>
               </label>
 
@@ -341,13 +338,13 @@
 
               <label for="id_bleeding_disorder_0" class="fancy-radio">
                 <input type="radio" name="bleeding_disorder" value="Yes" id="id_bleeding_disorder_0"
-                       {% if detailsedit.bleeding_disorder == 'Yes' %}checked{% endif %} required="">
+                       {% if patientlist.bleeding_disorder == 'Yes' %}checked{% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_bleeding_disorder_1" class="fancy-radio">
                 <input type="radio" name="bleeding_disorder" value="No" id="id_bleeding_disorder_1"
-                       {% if detailsedit.bleeding_disorder == 'No' %}checked{% endif %} required="">
+                       {% if patientlist.bleeding_disorder == 'No' %}checked{% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -359,13 +356,13 @@
 
               <label for="id_hepa_b_c_hiv_0" class="fancy-radio">
                 <input type="radio" name="hepa_b_c_hiv" value="Yes" id="id_hepa_b_c_hiv_0"
-                       {% if detailsedit.hepa_b_c_hiv == 'Yes' %}checked{% endif %} required="">
+                       {% if patientlist.hepa_b_c_hiv == 'Yes' %}checked{% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_hepa_b_c_hiv_1" class="fancy-radio">
                 <input type="radio" name="hepa_b_c_hiv" value="No" id="id_hepa_b_c_hiv_1"
-                       {% if detailsedit.hepa_b_c_hiv == 'No' %}checked{% endif %} required="">
+                       {% if patientlist.hepa_b_c_hiv == 'No' %}checked{% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -378,13 +375,13 @@
 
               <label for="id_take_any_vaccine_0" class="fancy-radio">
                 <input type="radio" name="take_any_vaccine" value="Yes" id="id_take_any_vaccine_0"
-                       {% if detailsedit.take_any_vaccine == 'Yes' %}checked{% endif %} required="">
+                       {% if patientlist.take_any_vaccine == 'Yes' %}checked{% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_take_any_vaccine_1" class="fancy-radio">
                 <input type="radio" name="take_any_vaccine" value="No" id="id_take_any_vaccine_1"
-                       {% if detailsedit.take_any_vaccine == 'No' %}checked{% endif %} required="">
+                       {% if patientlist.take_any_vaccine == 'No' %}checked{% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -393,39 +390,38 @@
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">What kinds of vaccine?</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="vaccine_type" class="form-control" value="{{ detailsedit.vaccine_type }}"
-                     required="" id="id_vaccine_type">
+              <input type="text" name="vaccine_type" maxlength=400 class="form-control" value="{{ patientlist.vaccine_type }}"
+                     id="id_vaccine_type">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Drug History (If any name)</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="drug_history_name_if_any" class="form-control"
-                     value="{{ detailsedit.drug_history_name_if_any }}" required=""
+              <input type="date" name="drug_history_name_if_any" maxlength=200 class="form-control"
+                     value="{{ patientlist.drug_history_name_if_any|date:'Y-m-d' }}"
                      id="id_drug_history_name_if_any">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Last dental check-up date</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="last_dental_check_up_date" class="form-control" data-provide="datepicker"
-                     value="{{ detailsedit.last_dental_check_up_date }}"
-                     data-date-autoclose="true" required="" id="id_last_dental_check_up_date">
+              <input type="date" name="last_dental_check_up_date" class="form-control"
+                     value="{{ patientlist.last_dental_check_up_date|date:'Y-m-d' }}" id="id_last_dental_check_up_date">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">What kinds of treatment do you have last for teeth?</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="last_treatment_type" class="form-control"
-                     value="{{ detailsedit.last_treatment_type }}" required=""
+              <input type="text" name="last_treatment_type" class="form-control" maxlength=200
+                     value="{{ patientlist.last_treatment_type }}"
                      id="id_last_treatment_type">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Habits &amp; Addiction</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="habits_addiction_name" class="form-control"
-                     value="{{ detailsedit.habits_addiction_name }}" required=""
+              <input type="text" name="habits_addiction_name" class="form-control" maxlength=200
+                     value="{{ patientlist.habits_addiction_name }}"
                      id="id_habits_addiction_name">
             </div>
           </div>
@@ -436,16 +432,16 @@
               <label for="id_experience_tooth_extraction_anaesthesia_0" class="fancy-radio">
                 <input type="radio" name="experience_tooth_extraction_anaesthesia" value="Yes"
                        id="id_experience_tooth_extraction_anaesthesia_0"
-                       {% if detailsedit.experience_tooth_extraction_anaesthesia == 'Yes' %}checked{% endif %}
-                       required="">
+                       {% if patientlist.experience_tooth_extraction_anaesthesia == 'Yes' %}checked{% endif %}
+                >
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_experience_tooth_extraction_anaesthesia_1" class="fancy-radio">
                 <input type="radio" name="experience_tooth_extraction_anaesthesia" value="No"
                        id="id_experience_tooth_extraction_anaesthesia_1"
-                       {% if detailsedit.experience_tooth_extraction_anaesthesia == 'No' %}checked{% endif %}
-                       required="">
+                       {% if patientlist.experience_tooth_extraction_anaesthesia == 'No' %}checked{% endif %}
+                >
                 <span><i></i>No</span>
               </label>
 
@@ -457,13 +453,13 @@
 
               <label for="id_pregnancy_0" class="fancy-radio">
                 <input type="radio" name="pregnancy" value="Yes" id="id_pregnancy_0"
-                       {% if detailsedit.pregnancy == 'Yes' %}checked{% endif %} required="">
+                       {% if patientlist.pregnancy == 'Yes' %}checked{% endif %}>
                 <span><i></i>Yes</span>
               </label>
 
               <label for="id_pregnancy_1" class="fancy-radio">
                 <input type="radio" name="pregnancy" value="No" id="id_pregnancy_1"
-                       {% if detailsedit.pregnancy == 'No' %}checked{% endif %} required="">
+                       {% if patientlist.pregnancy == 'No' %}checked{% endif %}>
                 <span><i></i>No</span>
               </label>
 
@@ -473,24 +469,23 @@
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Month Please (If pregnant)</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="month_pregnant" class="form-control" value="{{ detailsedit.month_pregnant }}"
-                     required="" id="id_month_pregnant">
+              <input type="text" maxlength=200 name="month_pregnant" class="form-control" value="{{ patientlist.month_pregnant }}"
+                     id="id_month_pregnant">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Last Period date</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="lmp_date" class="form-control" data-provide="datepicker"
-                     data-date-autoclose="true" value="{{ detailsedit.lmp_date }}" required="" id="id_lmp_date">
+              <input type="date" name="lmp_date" class="form-control"  id="id_lmp_date" value="{{ patientlist.lmp_date|date:'Y-m-d' }}">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Any other information</label>
             <div class="col-xl-9 col-sm-12">
-              <textarea name="other_information" cols="40" rows="3" class="form-control" required=""
-                        id="id_other_information">{{ detailsedit.other_information }}</textarea>
+              <textarea name="other_information" cols="40" rows="3" class="form-control"
+                        id="id_other_information">{{ patientlist.other_information }}</textarea>
             </div>
           </div>
 
@@ -501,24 +496,21 @@
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Date</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="treatment_date" class="form-control" data-provide="datepicker"
-                     data-date-autoclose="true" required="" value="{{ detailsedit.treatment_date }}"
-                     id="id_treatment_date">
+              <input type="date" name="treatment_date" class="form-control"  id="id_treatment_date" value="{{ patientlist.treatment_date|date:'Y-m-d' }}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Procedure</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="procedure" class="form-control" value="{{ detailsedit.procedure }}"
-                     required="" id="id_procedure">
+              <input type="text" name="procedure" class="form-control" value="{{ patientlist.procedure }}"
+                     id="id_procedure">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-xl-3 col-sm-12">Next Work/Next Date</label>
             <div class="col-xl-9 col-sm-12">
-              <input type="text" name="next_date" class="form-control" data-provide="datepicker"
-                     data-date-autoclose="true" value="{{ detailsedit.next_date }}" required="" id="id_next_date">
+              <input type="date" name="next_date" class="form-control"  id="id_next_date" value="{{ patientlist.next_date|date:'Y-m-d' }}">
             </div>
           </div>
 

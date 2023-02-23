@@ -4,8 +4,11 @@ from django.contrib import admin
 
 from .models import *
 
+
 # Register your models here.
 
+class PatientListAdmin(admin.ModelAdmin):
+    list_display = ("registration_no", "patient_name",)
 
-admin.site.register(PatientInformation)
 
+admin.site.register(PatientInformation, PatientListAdmin)
